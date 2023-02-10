@@ -11,17 +11,16 @@ return [
     'download' => "Юклаб олиш",
 
     //   headers and menus
-    'farmers' => "Фермерлар",
-    'farmer' => "Фермер",
-    'office' => "Корхона",
-    'workers' => "Ишчилар",
-    'reports' => "Бажарилган ишлар",
-    'report_worker' => "Иш ҳақи",
-    'services' => "Нархлар",
-    'tractors' => "Тракторлар",
-    "types" => "Улчов бирликлари",
+    "types" => "Турлар",
+    "types_add" => "Тур қўшиш",
+    "types_edit" => "Тур таҳрирлаш",
     "login" => "Кириш",
     "logout" => "Чиқиш",
+
+    //   form labels
+    "type_name" => "Тур номи",
+    "type_id" => "Тур ID",
+    "action" => "Амаллар",
 
     //    months
     "january" => "Январь",

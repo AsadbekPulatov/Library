@@ -8,7 +8,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Ўлчов бирлигини қўшиш</h4>
+                    <h4 class="modal-title">{{ __("messages.types_add") }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -18,8 +18,12 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="type">Ўлчов бирлиги:</label>
-                                <input type="text" name="type" class="form-control" id="type" required>
+                                <label for="id">{{ __("messages.type_id") }}:</label>
+                                <input type="number" name="id" class="form-control" id="id" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">{{ __("messages.type_name") }}:</label>
+                                <input type="text" name="name" class="form-control" id="name" required>
                             </div>
                         </div>
                         <!-- /.card-body -->

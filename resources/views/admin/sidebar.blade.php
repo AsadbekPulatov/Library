@@ -39,6 +39,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('types.index') }}"
+                       class="nav-link @if(request()->routeIs('types.index')) active @endif ">
+                        <i class="fa fa-users nav-icon"></i>
+                        <p>{{ __("messages.types") }}</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <a href="{{ route('logout') }}"
