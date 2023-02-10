@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -74,9 +75,18 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
+        $old = $type->id;
+        $count = Type::where('id', $request->id)->count();
+        if ($count > 0 && $type->id != $request->id){
+            return redirect()->route('types.index')->with('error', 'Тур мавжуд');
+        }
         $type->id = $request->id;
         $type->name = $request->name;
         $type->save();
+        $new = $type->id;
+        if ($old != $new){
+            Book::where('type_id', $old)->update(['type_id' => $new]);
+        }
         return redirect()->route('types.index')->with('success', 'Тур ўзгартирилди');
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,9 @@ Route::get('/admin', function () {
 })->middleware(['auth', 'verified'])->name('admin');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+    Route::post('books/import', [BookController::class, 'import'])->name('books.import');
     Route::resource('types', TypeController::class);
+    Route::resource('books', BookController::class);
 });
 
 Route::middleware('auth')->group(function () {

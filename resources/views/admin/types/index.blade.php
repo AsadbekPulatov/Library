@@ -61,6 +61,10 @@
         toastr.success("{{$message}}");
         @endif
 
+        @if ($message = Session::get('error'))
+        toastr.error("{{$message}}");
+        @endif
+
         let firmes =@json($types);
 
         function edit(id) {

@@ -39,6 +39,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('books.index') }}"
+                       class="nav-link @if(request()->routeIs('books.index')) active @endif ">
+                        <i class="fa fa-users nav-icon"></i>
+                        <p>{{ __("messages.books") }}</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('types.index') }}"
                        class="nav-link @if(request()->routeIs('types.index')) active @endif ">
                         <i class="fa fa-users nav-icon"></i>

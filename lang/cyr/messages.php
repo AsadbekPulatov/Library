@@ -3,6 +3,7 @@
 return [
 
     //  buttons
+    "import" => "Импорт",
     'save' => "Сақлаш",
     'saved' => "Сақланди",
     'add' => "Қўшиш",
@@ -12,6 +13,9 @@ return [
     'download' => "Юклаб олиш",
 
     //   headers and menus
+    "books" => "Китоблар",
+    "books_add" => "Китоб қўшиш",
+    "books_edit" => "Китоб таҳрирлаш",
     "types" => "Турлар",
     "types_add" => "Тур қўшиш",
     "types_edit" => "Тур таҳрирлаш",
@@ -32,6 +36,13 @@ return [
 
 
     //   form labels
+    "book_name" => "Китоб номи",
+    "author_name" => "Муаллиф номи",
+    "language" => "Тил",
+    "year" => "Йил",
+    "count" => "Сони",
+    "price" => "Нархи",
+    "file_upload" => "Файлни юклаш",
     "type_name" => "Тур номи",
     "type_id" => "Тур ID",
     "action" => "Амаллар",
