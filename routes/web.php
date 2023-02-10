@@ -21,9 +21,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/admin', function () {
-    return view('admin.master');
-})->middleware(['auth', 'verified'])->name('admin');
+Route::get('/admin', [\App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth'])->name('admin');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::post('books/import', [BookController::class, 'import'])->name('books.import');

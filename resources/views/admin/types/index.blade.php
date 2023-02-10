@@ -1,5 +1,4 @@
 @extends('admin.master')
-{{--@section('title', 'Улчов бирликлари')--}}
 @section('content')
     <div class="row">
 

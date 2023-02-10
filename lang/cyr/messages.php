@@ -13,6 +13,7 @@ return [
     'download' => "Юклаб олиш",
 
     //   headers and menus
+    "dashboard" => "Бошқарув панели",
     "books" => "Китоблар",
     "books_add" => "Китоб қўшиш",
     "books_edit" => "Китоб таҳрирлаш",
@@ -35,7 +36,8 @@ return [
     "confirm_password" => "Паролни тасдиқлаш",
 
 
-    //   form labels
+    // labels
+    "more_info" => "Батафсил",
     "book_name" => "Китоб номи",
     "author_name" => "Муаллиф номи",
     "language" => "Тил",

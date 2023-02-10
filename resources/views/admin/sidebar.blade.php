@@ -26,9 +26,9 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="{{ route('admin') }}"
-                       class="nav-link @if(request()->routeIs('dashboard')) active @endif ">
+                       class="nav-link @if(request()->routeIs('admin')) active @endif ">
                         <i class="fa fa-users nav-icon"></i>
-                        <p>Dashboard</p>
+                        <p>{{ __("messages.dashboard") }}</p>
                     </a>
                 </li>
                 <li class="nav-item">
