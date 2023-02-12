@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\OutlayController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::post('books/import', [BookController::class, 'import'])->name('books.import');
     Route::resource('types', TypeController::class);
     Route::resource('books', BookController::class);
+    Route::resource('outlays', OutlayController::class);
 });
 
 Route::middleware('auth')->group(function () {

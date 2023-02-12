@@ -37,6 +37,8 @@ return [
 
 
     // labels
+    "outlays" => "Чиқимлар",
+    "outlay" => "Чиқим",
     "more_info" => "Батафсил",
     "book_name" => "Китоб номи",
     "author_name" => "Муаллиф номи",

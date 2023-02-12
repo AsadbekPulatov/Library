@@ -46,6 +46,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('outlays.index') }}"
+                       class="nav-link @if(request()->routeIs('outlays.index')) active @endif ">
+                        <i class="fa fa-users nav-icon"></i>
+                        <p>{{ __("messages.outlays") }}</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('types.index') }}"
                        class="nav-link @if(request()->routeIs('types.index')) active @endif ">
                         <i class="fa fa-users nav-icon"></i>

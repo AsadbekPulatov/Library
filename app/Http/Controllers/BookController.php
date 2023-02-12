@@ -15,9 +15,13 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::paginate(10);
+        $type_id = $request->get('type_id');
+        if ($type_id)
+            $books = Book::orderby('created_at', 'DESC')->where('count', '!=', 0)->where('type_id', $type_id)->paginate(10)->withQueryString();
+        else
+            $books = Book::orderby('created_at', 'DESC')->where('count', '!=', 0)->paginate(10);
         return view('admin.books.index', compact('books'));
     }
 
@@ -106,19 +110,28 @@ class BookController extends Controller
         foreach ($array[0] as $row){
             if (!is_numeric($row[0])){
                 $category = $row[1];
+                if (!(isset($category) && !isset($row[0]))){
+                    continue;
+                }
                 $type_id = Type::where('name', $category)->first();
+                if (!isset($type_id)){
+                    $type_id = Type::create([
+                        'name' => $category,
+                    ]);
+                }
                 continue;
             }
             $arr[] = [
-                'book_name' => $row[1] ?? 'null',
-                'author_name' => $row[2] ?? 'null',
-                'language' => $row[3] ?? 'null',
+                'book_name' => $row[1] ?? '',
+                'author_name' => $row[2] ?? '',
+                'language' => $row[3] ?? '',
                 'year' => $row[4] ?? '0',
                 'count' => $row[5] ?? '0',
                 'price' => $row[6] ?? '0',
-                'type_id' => $type_id->id ?? '0',
+                'type_id' => $type_id->id,
             ];
         }
         Book::insert($arr);
+        return redirect()->route('books.index')->with('success', 'Китоблар муваффақиятли импорт қилинди');
     }
 }
