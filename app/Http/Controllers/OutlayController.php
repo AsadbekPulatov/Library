@@ -89,6 +89,11 @@ class OutlayController extends Controller
      */
     public function destroy(Outlay $outlay)
     {
-        //
+        $count = $outlay->count;
+        $book = Book::find($outlay->book_id);
+        $book->count += $count;
+        $book->save();
+        $outlay->delete();
+        return redirect()->route('outlays.index')->with('success', "Чиким муваффақиятли ўчирилди!");
     }
 }

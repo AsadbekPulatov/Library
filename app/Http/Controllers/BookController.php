@@ -18,11 +18,19 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $type_id = $request->get('type_id');
-        if ($type_id)
-            $books = Book::orderby('created_at', 'DESC')->where('count', '!=', 0)->where('type_id', $type_id)->paginate(10)->withQueryString();
-        else
+        $type_id = array($type_id);
+        $year = $request->get('year');
+        $years = Book::orderBy('year', 'DESC')->select('year')->distinct()->get();
+        $types = Book::with('type')->select('type_id')->distinct()->get();
+        if ($type_id && $year) {
+            $books = Book::orderby('created_at', 'DESC')->where('count', '!=', 0)->whereIn('type_id', $type_id)->whereIn('year', $year)->paginate(10)->withQueryString();
+        } else if ($type_id) {
+            $books = Book::orderby('created_at', 'DESC')->where('count', '!=', 0)->whereIn('type_id', $type_id)->paginate(10)->withQueryString();
+        } else if ($year) {
+            $books = Book::orderby('created_at', 'DESC')->where('count', '!=', 0)->whereIn('year', $year)->paginate(10)->withQueryString();
+        } else
             $books = Book::orderby('created_at', 'DESC')->where('count', '!=', 0)->paginate(10);
-        return view('admin.books.index', compact('books'));
+        return view('admin.books.index', compact('books', 'years', 'types'));
     }
 
     /**

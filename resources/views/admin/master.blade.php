@@ -21,13 +21,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
 
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.esm.min.js" integrity="sha512-wp1TmWHEmHgERMuWw8Q0tCwFbZab0o6MjMS/HceqShRObCHzIfTrZfjpMm1bTuqIVrQXd9SRhYt0V9hObySU/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' }}">
-    <link rel="stylesheet" href="{{ 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css' }}">
-    <link rel="stylesheet" href="{{ 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css' }}">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -88,19 +86,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<!-- DataTables  & Plugins -->
-<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
-<script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Select2 Multiple
+        $('.select2-multiple-1').select2({
+            placeholder: "Select",
+            allowClear: true,
+            theme: "classic",
+        });
+        $('.select2-multiple-2').select2({
+            placeholder: "Select",
+            allowClear: true,
+            theme: "classic",
+        });
+    });
+
+</script>
 
 
 @yield('custom-scripts')

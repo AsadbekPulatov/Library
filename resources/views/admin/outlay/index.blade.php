@@ -39,9 +39,9 @@
                                     </td>
                                     <td class="d-flex">
 
-                                        <a href="{{ route('outlays.edit', $item->id) }}" class="btn btn-warning">
-                                            <i class="fa fa-pen"></i>
-                                        </a>
+{{--                                        <a href="{{ route('outlays.edit', $item->id) }}" class="btn btn-warning">--}}
+{{--                                            <i class="fa fa-pen"></i>--}}
+{{--                                        </a>--}}
 
                                         <form action="{{route('outlays.destroy', $item->id)}}" method="post">
                                             @method('DELETE')

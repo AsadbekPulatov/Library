@@ -1,5 +1,4 @@
 @extends('admin.master')
-{{--@section('title', 'Фермерлар')--}}
 @section('content')
     <div class="row">
         <div class="col">
@@ -20,75 +19,15 @@
                                 <i class="fa fa-upload"></i> {{ __("messages.import") }}
                             </button>
                         </div>
-                        <div class="modal fade" id="modal-create">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">{{ __("messages.import") }}</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form method="post" action="{{route('books.import')}}"
-                                              enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <label for="file">{{ __("messages.file_upload") }}:</label>
-                                                    <input type="file" name="file" class="form-control" id="file"
-                                                           required>
-                                                </div>
-                                            </div>
-                                            <!-- /.card-body -->
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-default"
-                                                        data-dismiss="modal">{{ __("messages.close") }}</button>
-                                                <button type="submit"
-                                                        class="btn btn-primary">{{ __("messages.save") }}</button>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
+                        <div>
+                            <button type="button" class="btn btn-success ml-3" data-toggle="modal"
+                                    data-target="#modal-filter">
+                                <i class="fa fa-filter"></i> {{ __("messages.filter") }}
+                            </button>
                         </div>
-                        <div class="modal fade" id="modal-car">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">{{ __("messages.outlay") }}</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form method="post" action="{{route('outlays.store')}}">
-                                            @csrf
-                                            <div class="card-body">
-                                                <input type="hidden" name="book_id" class="form-control" id="book_id">
-                                                <div class="form-group">
-                                                    <label for="count">{{ __("messages.count") }}:</label>
-                                                    <input type="number" name="count" class="form-control" id="count" min="1" value="1">
-                                                </div>
-                                            </div>
-                                            <!-- /.card-body -->
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-default"
-                                                        data-dismiss="modal">{{ __("messages.close") }}</button>
-                                                <button type="submit"
-                                                        class="btn btn-primary">{{ __("messages.save") }}</button>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
+                        @include('admin.books.modal_upload')
+                        @include('admin.books.modal_outlay')
+                        @include('admin.books.modal_filter')
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -122,7 +61,9 @@
                                     </td>
                                     <td class="d-flex">
 
-                                        <button type="button" onclick="outlay({{ $item->id }}, {{ $item->count }})" class="btn btn-success ml-3" data-toggle="modal" data-target="#modal-car">
+                                        <button type="button" onclick="outlay({{ $item->id }}, {{ $item->count }})"
+                                                class="btn btn-success ml-3" data-toggle="modal"
+                                                data-target="#modal-car">
                                             <i class="fa fa-car"></i>
                                         </button>
 
@@ -155,6 +96,8 @@
 @endsection
 @section('custom-scripts')
     <script>
+
+
 
         @if ($message = Session::get('success'))
         toastr.success("{{$message}}");
